@@ -2,7 +2,8 @@ const { Router } = require("express");
 const axios = require('axios');
 const RouterCountry = Router();
 const { getDataCountry, getDBCountrys } = require("../controllers/getCountrys");
-const { getCountryByName } = require("../controllers/getCountryByName")
+const { getCountryByName } = require("../controllers/getCountryByName");
+const { getCountryById } = require("../controllers/getCountryById");
 
 RouterCountry.get("/", async (req, res) => {
     try {
@@ -33,6 +34,8 @@ RouterCountry.get("/", async (req, res) => {
 
 RouterCountry.get("/myCountries", getDBCountrys)
 
-RouterCountry.get("/myCountry/name", getCountryByName)
+RouterCountry.get("/myCountries/name", getCountryByName)
+
+RouterCountry.get("/myCountries/:id", getCountryById);
 
 module.exports = RouterCountry;
