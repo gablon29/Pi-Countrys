@@ -22,19 +22,14 @@ module.exports = (sequelize) => {
         },
         Duracion: {
             type: DataTypes.TIME,
-            // validate: {
-            //     isTime: (value) => {
-            //         if (value && !/^\d{2}:\d{2}:00$/.test(value)) {
-            //             throw new Error('El valor debe ser en formato HH:mm')
-            //         }
-
-            //     }
-            // }
+            
         },
         Temporada: {
             type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
             // allowNull: false
         }
 
+    }, {
+       timestamps: false
    } ) 
 }
