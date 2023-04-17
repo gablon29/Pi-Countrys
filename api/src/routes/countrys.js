@@ -21,9 +21,9 @@ RouterCountry.get("/", async (req, res) => {
                     }
 
             })
-            data.forEach((country) => {
+            data.forEach( async(country) => {
                 const { ID, Nombre, Bandera, Continente, Capital, Subregion, Area, Poblacion } = country;
-               return  getDataCountry({ID, Nombre, Bandera, Continente, Capital, Subregion, Area, Poblacion})
+               return await getDataCountry({ID, Nombre, Bandera, Continente, Capital, Subregion, Area, Poblacion})
             })
             res.status(200).json(data)
             

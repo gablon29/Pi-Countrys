@@ -1,4 +1,3 @@
-const axios = require("axios");
 const { Countries } = require("../db");
 
 const getDataCountry = (count) => {

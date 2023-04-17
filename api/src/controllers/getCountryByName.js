@@ -7,7 +7,7 @@ const getCountryByName = async (req, res) => {
         const myCountry = await Countries.findAll({
             where: {
                 Nombre: {
-                    [Op.substring]: `${name}`
+                    [Op.iLike]: `%${name}%`
                 }
             }
         })
