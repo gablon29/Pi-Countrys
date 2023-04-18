@@ -1,4 +1,55 @@
-.cards {
+
+.cards{
+    position: relative;
     display: inline-block;
-    background-color: red;
+    font-size: 0;
+    margin: 10px;
+    padding: 0%;
+} 
+    
+    
+    
+.cards img{
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
 }
+.cards:hover img {
+    transform: scale(1.1);
+}
+
+.cards .divTexts  {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.623);
+    color: #fcf7f7;
+    padding: 0%;
+    opacity: 0;
+        /* hacer el texto transparente por defecto */
+    transition: opacity 0.3s ease-in-out;
+        /* agregar transición para un efecto suave */
+    }
+    
+    .cards:hover .divTexts {
+        opacity: 1;
+        /* hacer el texto visible cuando se posicione el puntero sobre la imagen */
+    }
+
+    h6 {
+        font-family:cursive;
+        margin: 1px;
+        font-weight:900;
+        font-size: small;
+    }
+    p {
+        font-family: cursive;
+        margin: 5px;
+        font-weight: 900;
+        font-size: small;
+    }

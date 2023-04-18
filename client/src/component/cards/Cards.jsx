@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Card from '../card/Card';
 import { getCountries } from '../../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,7 +18,7 @@ const Cards = () => {
           {
               countries?.map(({ ID, Nombre, Bandera, Continente, Capital, Poblacion }) => {
               return (
-          <div className='conteiner_cards'>
+          <div className='conteiner'>
                       <Card ID={ID}
                           Nombre={Nombre}
                           Bandera={Bandera}

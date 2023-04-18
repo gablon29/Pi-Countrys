@@ -1,9 +1,6 @@
 
-.conteiner_cards {
-    white-space: nowrap;
+.conteiner {
     display: inline-block;
-    width: 100%;
-    height: auto;
 }
     
     
