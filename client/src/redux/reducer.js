@@ -1,5 +1,7 @@
 import {
+    DETAIL,
     GET_COUNTRIES,
+    RESET_DETAIL,
     SEARCH_COUNTRIES
 } from './constantes';
 
@@ -18,10 +20,20 @@ export default function rootReducer(state = initialState, action) {
                 countries: action.payload,
                 allCountries: action.payload,
             }
-        case SEARCH_COUNTRIES: 
+        case SEARCH_COUNTRIES:
             return {
                 ...state,
                 countries: action.payload
+            };
+        case DETAIL:
+            return {
+                ...state,
+                detail: action.payload
+            };
+        case RESET_DETAIL:
+            return {
+                ...state,
+                detail:[]
             }
         default:
             return state

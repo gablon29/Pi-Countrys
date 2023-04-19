@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../card/Card';
+import { Link } from "react-router-dom";
 import { getCountries } from '../../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -18,7 +19,8 @@ const Cards = () => {
           {
               countries?.map(({ ID, Nombre, Bandera, Continente, Capital, Poblacion }) => {
               return (
-          <div className='conteiner'>
+                <div className='conteiner'>
+                  <Link className='link' to={`/Home/${ID}`}>
                       <Card ID={ID}
                           Nombre={Nombre}
                           Bandera={Bandera}
@@ -26,7 +28,7 @@ const Cards = () => {
                           Capital={Capital}
                           Poblacion={Poblacion}
               />
-
+            </Link>
           </div>
               )
               })

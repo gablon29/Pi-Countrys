@@ -1,0 +1,24 @@
+.divDetail {
+width: 100%;
+height: 100%;
+overflow: hidden;
+margin: 10px;
+padding: 5px;
+}
+.divBandera {
+float: right;
+width: 50%;
+height: 50%;
+margin: 5px;
+padding-right: 20px;
+}
+.divBandera img {
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+    padding-right: 5px;
+}
+.divText {
+    float: left;
+    text-align: left;
+}

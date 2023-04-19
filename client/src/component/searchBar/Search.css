@@ -1,0 +1,27 @@
+.btn-buscar {
+    transition: all 0.3s ease;
+}
+
+.btn-buscar:hover {
+    transform: scale(1.1);
+    background-color: #ff6600;
+}
+.casillaBusqueda {
+    border: 2px solid #ccc;
+    transition: all 0.3s ease;
+    transform: translateX(0);
+}
+.casillaBusqueda:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+    transform: translateX(-10px);
+}
+.casillaBusqueda::placeholder {
+    color: #ccc;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.casillaBusqueda:focus::placeholder {
+    opacity: 0;
+}

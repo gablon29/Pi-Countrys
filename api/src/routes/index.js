@@ -7,7 +7,7 @@ const routerAct = require('./activity');
 
 const router = Router();
 
-router.use("/country", RouterCountry)
+router.use("/", RouterCountry)
 router.use("/activity", routerAct)
 
 // Configurar los routers

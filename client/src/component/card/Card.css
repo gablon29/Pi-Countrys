@@ -22,18 +22,21 @@
 .cards .divTexts  {
     position: absolute;
     display: block;
+    text-align: center;
     width: 100%;
     height: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.623);
-    color: #fcf7f7;
+    background-color: rgba(250, 250, 250, 0.795);
+    color: #000000;
     padding: 0%;
     opacity: 0;
         /* hacer el texto transparente por defecto */
     transition: opacity 0.3s ease-in-out;
         /* agregar transición para un efecto suave */
+        border-radius: 10%;
+        border:#ddbd2c solid 5px;
     }
     
     .cards:hover .divTexts {
@@ -41,15 +44,27 @@
         /* hacer el texto visible cuando se posicione el puntero sobre la imagen */
     }
 
-    h6 {
+    h4 {
         font-family:cursive;
-        margin: 1px;
-        font-weight:900;
-        font-size: small;
-    }
-    p {
-        font-family: cursive;
         margin: 5px;
         font-weight: 900;
-        font-size: small;
+        font-size: large;
+        text-shadow: 2px 2px 0 #795959;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #000000;
+        text-align: center;
+     }
+
+    h6 {
+    display: block;
+    font-family: cursive;
+    margin: 5px;
+    font-weight: 900;
+    font-size: large;
+    text-shadow: 2px 2px 0 #ccc;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #333;
+    text-align: center;
     }

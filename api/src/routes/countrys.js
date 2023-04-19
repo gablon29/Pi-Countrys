@@ -32,10 +32,10 @@ RouterCountry.get("/", async (req, res) => {
     }
 })
 
-RouterCountry.get("/myCountries", getDBCountrys)
+RouterCountry.get("/countries", getDBCountrys)
 
-RouterCountry.get("/myCountries/name", getCountryByName)
+RouterCountry.get("/countries/name", getCountryByName)
 
-RouterCountry.get("/myCountries/:id", getCountryById);
+RouterCountry.get("/countries/:id", getCountryById);
 
 module.exports = RouterCountry;

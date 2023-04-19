@@ -1,5 +1,8 @@
-import React from 'react'
-import './Navbar.css'
+import React from 'react';
+import './Navbar.css';
+import SearchBar from '../searchBar/Search';
+
+
 
 const Navbar = () => {
   return (
@@ -10,11 +13,10 @@ const Navbar = () => {
     <li><a href="#">Acerca de</a></li>
     <li><a href="#">Contacto</a></li>
     <li>
-        <input type="text" name="buscar" placeholder="Buscar"/>
-        <button type="submit">Buscar</button>
     </li>
   </ul>
           
+    <SearchBar/>
     </div>
 </nav>
   )
