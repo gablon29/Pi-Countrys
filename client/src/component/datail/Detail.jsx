@@ -16,7 +16,7 @@ const Detail = (prop) => {
     // const { Capital, Continente } = countryDetail[0];
   return (
     //   <div ID={countryDetail.ID} className='pageDetail'>
-          <div>
+          <div className='divTotal'>
           {countryDetail.length ? 
               <div className='divDetail'>
                 <div className='divBandera'>
