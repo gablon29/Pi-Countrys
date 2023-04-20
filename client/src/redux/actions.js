@@ -1,9 +1,11 @@
 import axios from 'axios'
 import {
     GET_COUNTRIES,
-    ORDER_BY_NAME,
-    GET_ACTIVITIES,
-    POST_ACTIVITIES,
+    FILTER_CONTINENT,
+    ORDER_ALFABETIC,
+    ORDER_POPULATION,
+    // GET_ACTIVITIES,
+    // POST_ACTIVITIES,
     DETAIL,
     RESET_DETAIL,
     SEARCH_COUNTRIES,
@@ -55,4 +57,25 @@ export const resetDetail = () => (dispatch) => {
     dispatch({
         type: RESET_DETAIL
     })
+}
+
+export const filterByContinent = (payload) => {
+    return {
+        type: FILTER_CONTINENT,
+        payload,
+    };
+}
+
+export const orderByName = (payload) => {
+    return {
+        type: ORDER_ALFABETIC,
+        payload
+    };
+}
+
+export const orderByPopulation = (payload) => {
+    return {
+        type: ORDER_POPULATION,
+        payload
+    };
 }

@@ -1,21 +1,37 @@
 import React from 'react';
 import Card from '../card/Card';
 import { Link } from "react-router-dom";
-import { getCountries } from '../../redux/actions';
+import { filterByContinent, getCountries } from '../../redux/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import './Cards.css'
 
 const Cards = () => {
     const dispatch = useDispatch()
-    const countries = useSelector((state) => state.countries)
+  const countries = useSelector((state) => state.countries)
+  
+  const handleFilterContinent = (evento) => {
+    evento.preventDefault()
+    dispatch(filterByContinent(evento.target.value))
+  }
     
     useEffect(() => {
         dispatch(getCountries())
     }, [dispatch]);
 
   return (
-    <div>
+    <div className='divContenedorCar'>
+      <div>
+        <select className='filtrado' onChange={(evento) => handleFilterContinent(evento)}>
+          <option>Todos</option>
+          <option>South America</option>
+          <option>North America</option>
+          <option>Asia</option>
+          <option>Africa</option>
+          <option>Europe</option>
+          <option>Oceania</option>
+          </select>
+      </div>
           {
               countries?.map(({ ID, Nombre, Bandera, Continente, Capital, Poblacion }) => {
               return (

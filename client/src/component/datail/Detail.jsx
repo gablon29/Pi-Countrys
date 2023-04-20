@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail, resetDetail } from '../../redux/actions';
 import './Detail.css'
+import VideoDetail from '../video/VideoDetail';
 
 const Detail = (prop) => {
     
@@ -16,7 +17,8 @@ const Detail = (prop) => {
     // const { Capital, Continente } = countryDetail[0];
   return (
     //   <div ID={countryDetail.ID} className='pageDetail'>
-          <div className='divTotal'>
+    <div className='divTotal'>
+      <VideoDetail/>
           {countryDetail.length ? 
               <div className='divDetail'>
                 <div className='divBandera'>

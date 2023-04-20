@@ -1,5 +1,6 @@
 import {
     DETAIL,
+    FILTER_CONTINENT,
     GET_COUNTRIES,
     RESET_DETAIL,
     SEARCH_COUNTRIES
@@ -35,6 +36,15 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 detail:[]
             }
+        case FILTER_CONTINENT:
+            const filterContinent = state.allCountries;
+            const filter = action.payload === 'Todos' ? filterContinent :
+                filterContinent.filter(country => country.Continente === action.payload)
+            return {
+                ...state,
+                countries: filter
+            }
+        
         default:
             return state
     };

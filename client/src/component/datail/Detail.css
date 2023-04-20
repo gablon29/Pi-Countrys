@@ -1,12 +1,12 @@
 
-.divTotal {
+/* .divTotal {
 background-image: url('../../img/Pi_mapa.jpg');
 background-size: cover;
 width: 100vw;
 height: 100vh;
 margin: 0;
 padding: 0;
-}
+} */
 
 .divDetail {
 width: 100%;
@@ -19,11 +19,12 @@ float: right;
 width: 50%;
 height: 50%;
 margin: 5px;
+padding: 10px;
 
 }
 .divBandera img {
-    width: 90%;
-    height: 100%;
+    width: 100%;
+    height: auto;
     margin: 5px;
     border: 2px solid #333;
     box-shadow: 2px 2px 5px #ccc;
@@ -47,7 +48,7 @@ h1, h2 {
 }
 
 img:hover {
-    transform: scale(1.1);
+    transform: scale(1.0);
     filter: grayscale(0%);
     box-shadow: 4px 4px 10px #ccc;
 }
