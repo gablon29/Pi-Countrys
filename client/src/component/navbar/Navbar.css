@@ -11,7 +11,7 @@
         transition: color 0.3s ease;
 }
 
-a::before {
+.navbarStyle a::before {
     content: '';
     position: absolute;
     left: 0;
@@ -23,11 +23,11 @@ a::before {
     transform-origin: left;
     transition: transform 0.3s ease;
 }
-a:hover {
+.navbarStyle a:hover {
     color: white;
 }
 
-a:hover::before {
+.navbarStyle a:hover::before {
     transform: scaleX(1);
 }
 

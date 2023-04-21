@@ -1,5 +1,18 @@
 .conteiner {
     display: inline-block;
 }
+
+.filtrado {
+    margin: 10px;
+    transition: all 0.3s ease;
+    border: 2px solid #ccc;
+    box-shadow: 2px 2px 5px #ccc;
+}
+
+.filtrado:hover {
+    transform: scale(1.1);
+    background-color: #ff6600;
+}
+
     
     

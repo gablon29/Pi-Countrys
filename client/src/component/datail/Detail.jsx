@@ -18,9 +18,11 @@ const Detail = (prop) => {
   return (
     //   <div ID={countryDetail.ID} className='pageDetail'>
     <div className='divTotal'>
-      <VideoDetail/>
           {countryDetail.length ? 
               <div className='divDetail'>
+               { <VideoDetail/> ? <VideoDetail/> : <div>
+                <h1>Loading...</h1>
+                </div>}
                 <div className='divBandera'>
                       <img src={countryDetail[0].Bandera} alt={countryDetail[0].Nombre}/>
                   </div>

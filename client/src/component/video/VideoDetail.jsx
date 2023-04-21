@@ -1,5 +1,5 @@
 import React from 'react'
-import myVideo from '../../img/video.mp4';
+import myVideo from '../../img/paisajes.mp4';
 import './videoBackgroundInico.css'
 
 const VideoDetail = () => {
