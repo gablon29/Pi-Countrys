@@ -1,4 +1,13 @@
 .btn-buscar {
+    background-color: #0cc7b7;
+    color: rgb(2, 2, 2);
+    font-weight: bold;
+    font-size: 15px;
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
 }
 
@@ -8,13 +17,15 @@
 }
 .casillaBusqueda {
     border: 2px solid #ccc;
+    border-radius: 10px;
+    margin: 5px;
     transition: all 0.3s ease;
-    transform: translateX(0);
+    
 }
 .casillaBusqueda:focus {
     border-color: #ff6600;
     box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
-    transform: translateX(-10px);
+    transform: scale(1.1);
 }
 .casillaBusqueda::placeholder {
     color: #ccc;

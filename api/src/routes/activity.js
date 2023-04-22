@@ -3,7 +3,7 @@ const { postActByBody } = require("../controllers/postActByBody");
 const { getActById } = require("../controllers/getActById");
 const routerAct = Router();
 
-routerAct.post("/myActivity", async (req, res) => {
+routerAct.post("/activity", async (req, res) => {
     try {
     const {ID, Nombre, Dificultad, Duracion, Temporada} = req.body;
     const myActivity = await postActByBody({ID, Nombre, Dificultad, Duracion, Temporada})
@@ -14,6 +14,6 @@ routerAct.post("/myActivity", async (req, res) => {
     }
 })
 
-routerAct.get("/myActivity/:id", getActById)
+routerAct.get("/activity/:id", getActById)
 
 module.exports = routerAct;

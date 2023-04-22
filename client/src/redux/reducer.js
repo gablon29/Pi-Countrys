@@ -1,9 +1,16 @@
 import {
     DETAIL,
+    ORDER_ALFABETIC,
+    ORDER_POPULATION,
+    NUMEROUS_COUNTRYS,
+    LESS_NUMEROUS,
     FILTER_CONTINENT,
     GET_COUNTRIES,
     RESET_DETAIL,
-    SEARCH_COUNTRIES
+    SEARCH_COUNTRIES,
+    POPULATION,
+    GET_ACTIVITIES,
+    POST_ACTIVITIES,
 } from './constantes';
 
 let initialState = {
@@ -34,7 +41,7 @@ export default function rootReducer(state = initialState, action) {
         case RESET_DETAIL:
             return {
                 ...state,
-                detail:[]
+                detail: []
             }
         case FILTER_CONTINENT:
             const filterContinent = state.allCountries;
@@ -44,8 +51,63 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 countries: filter
             }
+        case GET_ACTIVITIES:
+            return {
+                ...state,
+                activitis: action.payload
+            };
+        case POST_ACTIVITIES:
+            return {
+                ...state,
+            }
         
-        default:
-            return state
-    };
-};
+        case ORDER_ALFABETIC:
+            let filterName = state.countries;
+            let filterByName = action.payload === 'Todos' ? filterName.sort((a, b) => {
+                const countryA = a.Nombre.toUpperCase();
+                const countryB = b.Nombre.toUpperCase();
+                if (countryA < countryB) return 1;
+                if (countryA > countryB) return -1;
+                return 0;
+            }) :
+                filterName.sort((a, b) => {
+                    const countryA = a.Nombre.toUpperCase();
+                    const countryB = b.Nombre.toUpperCase();
+                    if (countryA < countryB) return -1;
+                    if (countryA > countryB) return 1;
+                    return 0;
+                })
+            return {
+                ...state,
+                countries: filterByName
+            }
+        case ORDER_POPULATION:
+            if(action.payload === POPULATION) return state 
+            let getPopulation = action.payload === NUMEROUS_COUNTRYS  ? 
+                state.countries.sort((a, b) => {
+                    const countryA = a.Poblacion;
+                    const countryB = b.Poblacion;
+                    if (countryA < countryB) return 1;
+                    if (countryA > countryB) return -1;
+                    return 0
+                }) : state.countries.sort((a, b) => {
+                    const countryA = a.Poblacion;
+                    const countryB = b.Poblacion;
+                    if (countryA < countryB) return -1;
+                    if (countryA > countryB) return 1;
+                    return 0
+                })
+            return {
+                ...state,
+                countries: getPopulation
+            }
+                default:
+                    return state
+            };
+        };
+            
+
+           
+                
+
+        

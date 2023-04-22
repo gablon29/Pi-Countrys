@@ -3,6 +3,7 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import Home from './component/home/Home';
 import Detail from './component/datail/Detail';
 import LandingPage from './component/landingPage/LandingPage';
+import Spinner from './component/video/Spinner';
 
 function App() {
   return (

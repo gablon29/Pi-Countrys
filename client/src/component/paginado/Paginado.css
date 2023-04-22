@@ -1,0 +1,18 @@
+#paginado_btn {
+    background-color: #06efdb;
+    color: rgb(3, 3, 3);
+    width: 2rem;
+    height: auto;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#paginado_btn:hover {
+    background-color: #0080ff;
+    transform: scale(1.1);
+}

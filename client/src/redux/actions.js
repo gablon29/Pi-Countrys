@@ -4,8 +4,9 @@ import {
     FILTER_CONTINENT,
     ORDER_ALFABETIC,
     ORDER_POPULATION,
-    // GET_ACTIVITIES,
-    // POST_ACTIVITIES,
+    GET_ACTIVITIES,
+    POST_ACTIVITIES,
+    FILTER_ACTIVITY,
     DETAIL,
     RESET_DETAIL,
     SEARCH_COUNTRIES,
@@ -79,3 +80,25 @@ export const orderByPopulation = (payload) => {
         payload
     };
 }
+
+export const getActivities = () => async (dispatch) => {
+    try {
+        let response = await axios.get("http://localhost:3001/activity");
+        return dispatch({
+            type: GET_ACTIVITIES,
+            payload: response.data
+        })
+    } catch (error) {
+        alert('No hay actividad todavia con ese nombre')
+        return {
+            error: error.message
+        }
+    }
+};
+
+export const postActivities = (payload) => async (dispatch) => {
+    await axios.post('http://localhost:3001/activity', payload);
+    return dispatch({
+        type: POST_ACTIVITIES,
+    });
+};
