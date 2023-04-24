@@ -21,11 +21,11 @@ RouterCountry.get("/", async (req, res) => {
                     }
 
             })
-            data.forEach( async(country) => {
+           let dataCreation = data.forEach( async(country) => {
                 const { ID, Nombre, Bandera, Continente, Capital, Subregion, Area, Poblacion } = country;
                return await getDataCountry({ID, Nombre, Bandera, Continente, Capital, Subregion, Area, Poblacion})
             })
-            res.status(200).json(data)
+            res.status(200).json(dataCreation)
             
     } catch (error) {
         res.status(404).json({ error: error.message });

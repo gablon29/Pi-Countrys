@@ -33,6 +33,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Countries, Activity } = sequelize.models;
 
 // Aca vendrian las relaciones
+Countries.belongsToMany(Activity, {through: 'activities_countries'})
+Activity.belongsToMany(Countries, {through: 'activities_countries'})
 // Product.hasMany(Reviews);
 
 module.exports = {

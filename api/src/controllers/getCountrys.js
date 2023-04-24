@@ -1,4 +1,4 @@
-const { Countries } = require("../db");
+const { Countries, Activity } = require("../db");
 
 const getDataCountry = (count) => {
     const countryDB = Countries.create(count)
@@ -7,11 +7,18 @@ const getDataCountry = (count) => {
 
 const getDBCountrys = async (req, res) => {
     try {
-        const countrys = await Countries.findAll()
-        res.status(200).json(countrys);
-
+        const countrys = await Countries.findAll({
+        include: {
+        model: Activity,
+        attributes: ["Nombre", "Dificultad", "Duracion", "Temporada"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+        return res.status(200).json(countrys);
     } catch (error) {
-        res.status(404).json({ error: error.message });
+       return res.status(404).json({ error: error.message });
 }
 }
 

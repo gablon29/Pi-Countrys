@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../card/Card';
 import { Link } from "react-router-dom";
-import { filterByContinent, getCountries, orderByName, orderByPopulation } from '../../redux/actions';
+import { filterByContinent, getActivities, getCountries, orderByName, orderByPopulation } from '../../redux/actions';
 import {NUMEROUS_COUNTRYS, LESS_NUMEROUS, POPULATION} from '../../redux/constantes'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
@@ -9,7 +9,8 @@ import Paginado from '../paginado/Paginado';
 import './Cards.css'
 
 const Cards = () => {
-    const dispatch = useDispatch()
+  const dispatch = useDispatch()
+  const activities = useSelector((state) => state.activitis)
   const countries = useSelector((state) => state.countries)
 
   const [page, setPage] = useState(1);
@@ -48,9 +49,9 @@ const Cards = () => {
   }
     
     useEffect(() => {
-        dispatch(getCountries())
+      dispatch(getCountries())
+      dispatch(getActivities())
     }, [dispatch]);
-
   return (
     <div className='divContenedorCar'>
       <div>

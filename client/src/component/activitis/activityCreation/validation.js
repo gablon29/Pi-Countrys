@@ -8,7 +8,7 @@ export const validation = (userData, errors) => {
     else error.Dificultad = '';
     if (!userData.Temporada) error.Temporada = 'Debes completar este campo';
     else error.Temporada = '';
-    if (!userData.countryId === []) error.countryId = 'Debes elegir un País';
+    if (!userData.country_Index === []) error.countryId = 'Debes elegir un País';
     else error.countryId = '';
     return error;
 }

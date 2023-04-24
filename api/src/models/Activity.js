@@ -1,11 +1,12 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes, UUIDV4 } = require("sequelize");
 
 module.exports = (sequelize) => {
     sequelize.define("Activity", {
         ID: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             primaryKey: true,
-            autoIncrement: true
+            unique: true,
+            defaultValue: UUIDV4
         },
         Nombre: {
             type: DataTypes.STRING,
@@ -22,11 +23,11 @@ module.exports = (sequelize) => {
         },
         Duracion: {
             type: DataTypes.TIME,
-            
+            allowNull: false,
         },
         Temporada: {
             type: DataTypes.ENUM('Verano', 'Otoño', 'Invierno', 'Primavera'),
-            // allowNull: false
+            allowNull: false,
         }
 
     }, {
