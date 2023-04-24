@@ -10,7 +10,7 @@ import './Cards.css'
 
 const Cards = () => {
   const dispatch = useDispatch()
-  const activities = useSelector((state) => state.activitis)
+  const activitis = useSelector((state) => state.activitis)
   const countries = useSelector((state) => state.countries)
 
   const [page, setPage] = useState(1);

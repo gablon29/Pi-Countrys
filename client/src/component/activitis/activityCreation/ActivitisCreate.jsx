@@ -5,8 +5,14 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { validation } from './validation';
 import NavBar from '../../navbar/Navbar'
+import styled from 'styled-components';
+import './ActivitiStilo.css'
 
 const ActivitisCreate = () => {
+  const TextError = styled.p`
+  color: red;
+  margin:0px
+  `;
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState({});
@@ -21,6 +27,7 @@ const ActivitisCreate = () => {
     dispatch(getActivities())
     dispatch(getCountries())
   }, [dispatch]);
+
   
   const countries = useSelector((state) => state.allCountries)
   const handleChange = (evento) => {
@@ -28,12 +35,13 @@ const ActivitisCreate = () => {
       ...input,
       [evento.target.name]: evento.target.value
     });
-    console.log(input)
     setErrors(validation({
       ...input,
       [evento.target.name]: evento.target.value
-    },errors));
+    }, errors));
   }
+  console.log(errors)
+  console.log(input)
 
   const handleDelete = (id) => {
     setInput({
@@ -42,7 +50,7 @@ const ActivitisCreate = () => {
     })
   }
   
-  const handleSelect = (evento) => {
+  function handleSelect(evento) {
     setInput({
       ...input,
       countryid: [...input.countryid, evento.target.value]
@@ -51,8 +59,12 @@ const ActivitisCreate = () => {
 
   const handleSubmit = (evento) => {
     evento.preventDefault();
-    // if (errors)
-    //   return alert('Debes completar todos los campos');
+    if (
+      errors.Nombre !== '' ||
+      errors.Duracion !== '' ||
+      errors.Dificultad !== '' ||
+      errors.Temporada !== '')
+    return alert('Debes completar todos los campos');
     dispatch(postActivities(input));
     alert('Actividad creada con exito campeon')
     setInput({
@@ -72,20 +84,23 @@ const ActivitisCreate = () => {
       </div>
       <div>
         <form className='activity_form' onSubmit={handleSubmit}>
-          <h4>Create your Activity</h4>
+          <h1 className='titulo_actividad'>Crea tu actividad</h1>
           <div>
-            <label>Actividad</label>
-            <input type='text' 
+            <label className='stylo_label'>Actividad</label>
+            <input className='input_create'
+              type='text' 
               placeholder='Nombre de la actividad'
               name='Nombre'
               onChange={handleChange}
               value={input.Nombre}
             />
-            
           </div>
+          {errors.Nombre && <TextError>{errors.Nombre}</TextError>}  
+
           <div>
-            <label>Dificultad</label>
-            <input type='range' 
+            <label className='stylo_label'>Dificultad</label>
+            <input className='input_create'
+              type='range' 
               placeholder='Escribe la dificultad del 1 al 5'
               value={input.Dificultad}
               name='Dificultad'
@@ -95,16 +110,18 @@ const ActivitisCreate = () => {
             />
           </div>
           <div>
-            <label>Duracion</label>
-            <input type='text' 
+            <label className='stylo_label' >Duracion</label>
+            <input className='input_create'
+              type='text' 
               placeholder='Duracion promedio de tu actividad'
               value={input.Duracion}
               name='Duracion'
               onChange={handleChange}
             />
           </div>
+            {errors.Duracion && <TextError>{errors.Duracion}</TextError>}
           <div>
-            <select name='Temporada'
+            <select className='btn_select' name='Temporada'
               value={input.Temporada}
               onChange={(evento) => handleChange(evento)}
             >
@@ -116,14 +133,15 @@ const ActivitisCreate = () => {
             </select>
           </div>
           <div>
-            <select onChange={(evento) => handleSelect(evento)}>
-              <option>contruis</option>
+            <select className='btn_select' onChange={(evento) => handleSelect(evento)}>
+              <option>Paises</option>
               {
                 countries.map(country => (
-                  <option value={country.Nombre}>{country.Nombre}</option>
+                  <option value={country.id}>{country.Nombre}</option>
                 ))
               }
             </select>
+            
           </div>
           <div>
             {input.countryid.map(country => (
@@ -134,7 +152,7 @@ const ActivitisCreate = () => {
             ))}
           </div>
           <div>
-            <button type='submit'>Crear Actividad</button>
+            <button className='btn_create' type='submit'>Crear Actividad</button>
               </div>
         </form>
       </div>

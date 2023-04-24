@@ -10,8 +10,8 @@ import ActivityList from './component/activitis/activityList/ActivityList';
 function App() {
   return (
 
+    
     <div className="App">
-    <BrowserRouter>
         <Switch>
           <Route exact path='/' component={LandingPage} />
           <Route exact path='/Home' component={Home} />
@@ -20,7 +20,6 @@ function App() {
           <Route exact path='/Activity' component={ActivitisCreate} />
           <Route exact path='/Activities' component={ActivityList}/>
         </Switch>
-    </BrowserRouter>
       </div>
   );
 }

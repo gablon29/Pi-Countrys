@@ -1,6 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 import SearchBar from '../searchBar/Search';
+import { Link } from "react-router-dom";
 
 
 
@@ -9,9 +10,19 @@ const Navbar = () => {
 <nav>
 <div>
   <ul className='navbarStyle'>
-    <li><a href="#">Inicio</a></li>
-    <li><a href="#">Acerca de</a></li>
-    <li><a href="#">Contacto</a></li>
+          <Link to= '/'>
+            <li><a href="#">Inicio</a></li>
+          </Link>
+          <Link to= '/Home'>
+            <li><a href="#">Home</a></li>
+          </Link>
+          <Link to= '/activity'>
+            <li><a href="#">Crear Actividad</a></li>
+          </Link>
+          <Link to= '/activities'>
+            <li><a href="#">Actividades</a></li>
+          </Link>
+    
     <li>
     </li>
   </ul>

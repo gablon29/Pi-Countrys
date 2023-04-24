@@ -1,14 +1,20 @@
 export const validation = (userData, errors) => {
-    const error = {...errors};
-    if (!userData.Nombre.trim()) error.Nombre = 'Debes completar este campo';
-    else error.Nombre = '';
-    if (!userData.Duracion) error.Duracion = 'Debes completar este campo';
-    else error.Duracion = '';
-    if (!userData.Dificultad) error.Dificultad = 'Debes completar este campo';
+    let error = {...errors};
+    if (!userData.Nombre.trim()) {
+        error.Nombre = 'Debes completar este campo';
+    }
+    else if (userData.Nombre.length > 25)  {
+    error.Nombre = 'Nombre de la actividad demasiado largo'
+        } 
+        else error.Nombre = '';
+    if (!userData.Dificultad)
+        error.Dificultad = 'Agrega una dificultad';
     else error.Dificultad = '';
-    if (!userData.Temporada) error.Temporada = 'Debes completar este campo';
+    if (!/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(userData.Duracion)) error.Duracion = 'Debes indicar la duracion en formato HH:mm';
+    else error.Duracion = '';
+    if (!userData.Temporada) error.Temporada = 'Debes elegir una temporada';
     else error.Temporada = '';
-    if (!userData.country_Index === []) error.countryId = 'Debes elegir un País';
-    else error.countryId = '';
+    if (!userData.countryid === []) error.countryid = 'Debes elegir un País';
+    else error.countryid = '';
     return error;
 }

@@ -1,0 +1,70 @@
+.titulo_actividad {
+ color: #ccc;
+}
+.input_create {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin: 10px;
+    width: 20%;
+    transition: all 0.3s ease;
+
+}
+
+.input_create:focus {
+    border-color: #ff6600;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+    transform: scale(1.1);
+}
+
+.input_create::placeholder {
+    color: #ccc;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.input_create:focus::placeholder {
+    opacity: 0;
+}
+
+.stylo_label {
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    color:#ccc;
+    text-shadow: 2px 2px 5px rgb(0, 190, 254);
+}
+.btn_select{
+ background-color: #08cfc8;
+ color: rgb(1, 1, 1);
+ font-family: 'Helvetica Neue',
+ sans-serif;
+ padding: 5px 5px;
+ font-weight: bold;
+ font-size: 1rem;
+ margin: 10px;
+ border: none;
+ border-radius: 50px;
+ transition: all 0.3s ease;
+ box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+ }
+
+ .btn_select:hover {
+     transform: scale(1.0);
+     background-color: #ff6600;
+ }
+
+ .btn_create {
+     background-color: #ff0000;
+     color: white;
+     font-weight: bold;
+     font-size: 15px;
+     padding: 10px;
+     border: none;
+     border-radius: 50px;
+     transition: all 0.3s ease;
+ }
+
+ .btn_create:hover {
+     background-color: #ff00006a;
+     transform: scale(1.0);
+ }

@@ -1,0 +1,13 @@
+.div_lista {
+    background-color: rgb(51, 52, 52);
+    width: 100vw;
+    height: 100%;
+}
+
+.counteiner_activity {
+    display: inline-block;
+    margin: 5px;
+    width: 15rem;
+    height: auto;
+    box-shadow:  5px rgba(0, 0, 0, 0.3);
+}

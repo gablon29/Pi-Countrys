@@ -14,6 +14,7 @@ const Detail = (prop) => {
     }, [dispatch, prop.match.params.id])
     
     const countryDetail = useSelector((state) => state.detail)
+    console.log(countryDetail)
     // const { Capital, Continente } = countryDetail[0];
   return (
     //   <div ID={countryDetail.ID} className='pageDetail'>
