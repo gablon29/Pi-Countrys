@@ -19,9 +19,9 @@ const ActivityList = () => {
         <div className="div_lista">
             <Navbar/>
             {
-                activitis.map(({ Nombre, Duracion, Temporada, Dificultad, Countries }) => {
+                activitis.map(({ID, Nombre, Duracion, Temporada, Dificultad, Countries }) => {
                     return (
-                        <div className="counteiner_activity">
+                        <div className="counteiner_activity" key={ID}>
                             <Activitis 
                                 Nombre={Nombre}
                                 Duracion={Duracion}

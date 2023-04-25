@@ -10,7 +10,6 @@ import './Cards.css'
 
 const Cards = () => {
   const dispatch = useDispatch()
-  const activitis = useSelector((state) => state.activitis)
   const countries = useSelector((state) => state.countries)
 
   const [page, setPage] = useState(1);
@@ -48,10 +47,10 @@ const Cards = () => {
     setOrden(`Ordenado ${evento.target.value}`);
   }
     
-    useEffect(() => {
-      dispatch(getCountries())
-      dispatch(getActivities())
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCountries())
+    dispatch(getActivities())
+  }, [dispatch]);
   return (
     <div className='divContenedorCar'>
       <div>
@@ -84,7 +83,7 @@ const Cards = () => {
           {
               currentCountry?.map(({ ID, Nombre, Bandera, Continente, Capital, Poblacion }) => {
               return (
-                <div className='conteiner'>
+                <div className='conteiner' key={ID}>
                   <Link className='link' to={`/Home/${ID}`}>
                       <Card ID={ID}
                           Nombre={Nombre}

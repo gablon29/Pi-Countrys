@@ -22,7 +22,7 @@ routerAct.post("/", async (req, res) => {
     }
 })
 
-routerAct.get("/activity/:id", getActById)
+routerAct.get("/:name", getActById)
 
 
 module.exports = routerAct;

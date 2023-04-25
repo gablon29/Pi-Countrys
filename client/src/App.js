@@ -1,9 +1,8 @@
 import './App.css';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Home from './component/home/Home';
 import Detail from './component/datail/Detail';
 import LandingPage from './component/landingPage/LandingPage';
-import Spinner from './component/video/Spinner';
 import ActivitisCreate from './component/activitis/activityCreation/ActivitisCreate';
 import ActivityList from './component/activitis/activityList/ActivityList';
 

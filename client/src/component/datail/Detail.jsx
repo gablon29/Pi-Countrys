@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetail, resetDetail } from '../../redux/actions';
 import './Detail.css'
 import Navbar from '../navbar/Navbar'
-import { Link } from "react-router-dom";
 import VideoDetailDos from '../video/VideoDetailDos';
 
 const Detail = (prop) => {

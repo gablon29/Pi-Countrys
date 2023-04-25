@@ -10,16 +10,16 @@ const Navbar = () => {
 <div>
   <ul className='navbarStyle'>
           <Link to= '/'>
-            <li><a href="#">Inicio</a></li>
+            <li><p>Inicio</p></li>
           </Link>
           <Link to= '/Home'>
-            <li><a href="#">Home</a></li>
+            <li><p>Home</p></li>
           </Link>
           <Link to= '/activity'>
-            <li><a href="#">Crear Actividad</a></li>
+            <li><p>Crear Actividad</p></li>
           </Link>
           <Link to= '/activities'>
-            <li><a href="#">Actividades</a></li>
+            <li><p>Actividades</p></li>
           </Link>
     
     <li>

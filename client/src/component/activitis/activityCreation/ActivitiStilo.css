@@ -68,3 +68,15 @@
      background-color: #ff00006a;
      transform: scale(1.0);
  }
+
+ .text_range {
+    margin: 0px;
+    color:antiquewhite;
+    font-weight: 300;
+ }
+
+ .text_error {
+    color: red;
+    font-weight: 800;
+    font-family: 'Courier New', Courier, monospace;
+ }

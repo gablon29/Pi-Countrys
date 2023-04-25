@@ -1,3 +1,18 @@
+.coteiner_div_cards {
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+    margin: 2px;
+    background-color: white;
+    display: block;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.coteiner_div_cards h1 {
+    color: black;
+}
+
 .style_link {
         color: black;
         font-size: larger;

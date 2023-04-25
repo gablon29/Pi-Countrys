@@ -3,10 +3,11 @@ const { Activity } = require("../db");
 
 const getActById = async (req, res) => {
     try {
-        const { id } = req.params;
+        const { name } = req.params;
+        console.log(name)
         const myAct = await Activity.findAll({
             where: {
-                ID:  `${id}`
+                Nombre:  `${name}`
                 
             }
         })

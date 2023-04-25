@@ -1,7 +1,7 @@
 .navbarStyle {
     list-style: none;
 }
-.navbarStyle a {
+.navbarStyle p {
         color: black;
         font-size: larger;
         font-weight:800;
@@ -11,7 +11,7 @@
         transition: color 0.3s ease;
 }
 
-.navbarStyle a::before {
+.navbarStyle p::before {
     content: '';
     position: absolute;
     left: 0;
@@ -23,11 +23,11 @@
     transform-origin: left;
     transition: transform 0.3s ease;
 }
-.navbarStyle a:hover {
+.navbarStyle p:hover {
     color: white;
 }
 
-.navbarStyle a:hover::before {
+.navbarStyle p:hover::before {
     transform: scaleX(1);
 }
 

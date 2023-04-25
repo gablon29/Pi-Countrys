@@ -5,20 +5,15 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { validation } from './validation';
 import NavBar from '../../navbar/Navbar'
-import styled from 'styled-components';
 import './ActivitiStilo.css'
 
 const ActivitisCreate = () => {
-  const TextError = styled.p`
-  color: red;
-  margin:0px
-  `;
   const dispatch = useDispatch();
   const history = useHistory();
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
     Nombre: '',
-    Dificultad: '',
+    Dificultad: '3',
     Duracion: '',
     Temporada: '',
     countryid: [],
@@ -95,19 +90,20 @@ const ActivitisCreate = () => {
               value={input.Nombre}
             />
           </div>
-          {errors.Nombre && <TextError>{errors.Nombre}</TextError>}  
+          {errors.Nombre && <p className='text_error'>{errors.Nombre}</p>}  
 
           <div>
             <label className='stylo_label'>Dificultad</label>
             <input className='input_create'
               type='range' 
-              placeholder='Escribe la dificultad del 1 al 5'
               value={input.Dificultad}
               name='Dificultad'
               min='1'
               max='5'
               onChange={evento => handleChange(evento)}
             />
+            <p className='text_range'>{input.Dificultad}</p>
+             {errors.Dificultad && <p className='text_error'>{errors.Dificultad}</p>}
           </div>
           <div>
             <label className='stylo_label' >Duracion</label>
@@ -119,7 +115,7 @@ const ActivitisCreate = () => {
               onChange={handleChange}
             />
           </div>
-            {errors.Duracion && <TextError>{errors.Duracion}</TextError>}
+            {errors.Duracion && <p className='text_error'>{errors.Duracion}</p>}
           <div>
             <select className='btn_select' name='Temporada'
               value={input.Temporada}
