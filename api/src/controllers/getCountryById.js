@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Countries } = require("../db");
+const { Countries, Activity  } = require("../db");
 
 const getCountryById = async (req, res) => {
     try{
@@ -9,7 +9,14 @@ const getCountryById = async (req, res) => {
                 ID: {
                     [Op.iLike] : `%${id}%`
                 }
-            }
+            },
+            include: {
+                model: Activity,
+                attributes: ["Nombre"],
+                through: {
+                  attributes: [],
+                },
+              },
         })
         myCountryId.length ? res.status(200).json(myCountryId) :
         res.status(404).send({ message: 'Country not found' });

@@ -5,7 +5,7 @@ const getAllActivity = async (req, res) => {
         const getAc = await Activity.findAll({
             include: {
                 model: Countries,
-                attributes: ["Nombre"],
+                attributes: ["ID","Nombre"],
                 through: {
           attributes: [],
         },

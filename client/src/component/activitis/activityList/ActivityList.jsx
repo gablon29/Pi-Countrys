@@ -7,6 +7,7 @@ import "../activityCreation/ActivitisCreate";
 import Navbar from "../../navbar/Navbar";
 
 
+
 const ActivityList = () => {
     
     const dispatch = useDispatch()

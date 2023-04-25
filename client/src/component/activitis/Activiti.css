@@ -1,0 +1,28 @@
+.style_link {
+        color: black;
+        font-size: larger;
+        font-weight:800;
+        text-decoration: none;
+        display: block;
+        position: relative;
+        transition: color 0.3s ease;
+}
+
+.style_link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(255, 0, 0);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+.style_link:hover {
+color: rgb(6, 113, 163);
+}
+.style_link:hover::before {
+transform: scaleX(1);
+}
