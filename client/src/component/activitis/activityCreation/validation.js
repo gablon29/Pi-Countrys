@@ -12,9 +12,9 @@ export const validation = (userData, errors) => {
     else error.Dificultad = '';
     if (!/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.test(userData.Duracion)) error.Duracion = 'Debes indicar la duracion en formato HH:mm';
     else error.Duracion = '';
-    if (!userData.Temporada) error.Temporada = 'Debes elegir una temporada';
+    if (!userData.Temporada || userData.Temporada === 'Temporada') error.Temporada = 'Debes elegir una temporada';
     else error.Temporada = '';
-    if (!userData.countryid === []) error.countryid = 'Debes elegir un País';
+    if (userData.countryid === [] || userData.countryid.includes('Paises')) error.countryid = 'Debes elegir un País';
     else error.countryid = '';
     return error;
 }

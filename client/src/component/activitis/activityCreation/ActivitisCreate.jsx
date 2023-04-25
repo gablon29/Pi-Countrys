@@ -22,9 +22,9 @@ const ActivitisCreate = () => {
     dispatch(getActivities())
     dispatch(getCountries())
   }, [dispatch]);
-
   
   const countries = useSelector((state) => state.allCountries)
+  
   const handleChange = (evento) => {
     setInput({
       ...input,
@@ -35,9 +35,7 @@ const ActivitisCreate = () => {
       [evento.target.name]: evento.target.value
     }, errors));
   }
-  console.log(errors)
-  console.log(input)
-
+  
   const handleDelete = (id) => {
     setInput({
       ...input,
@@ -51,6 +49,8 @@ const ActivitisCreate = () => {
       countryid: [...input.countryid, evento.target.value]
     })
   }
+  console.log(errors)
+  console.log(input)
 
   const handleSubmit = (evento) => {
     evento.preventDefault();
@@ -59,9 +59,9 @@ const ActivitisCreate = () => {
       errors.Duracion !== '' ||
       errors.Dificultad !== '' ||
       errors.Temporada !== '')
-    return alert('Debes completar todos los campos');
+      return alert('Debes completar todos los campos');
     dispatch(postActivities(input));
-    alert('Actividad creada con exito campeon')
+    alert('Actividad creada con exito')
     setInput({
       Nombre: '',
       Dificultad: '',
@@ -75,7 +75,7 @@ const ActivitisCreate = () => {
   return (
     <div>
       <div>
-        <NavBar/>
+        <NavBar />
       </div>
       <div>
         <form className='activity_form' onSubmit={handleSubmit}>
@@ -130,10 +130,9 @@ const ActivitisCreate = () => {
           </div>
           <div>
             <select className='btn_select' onChange={(evento) => handleSelect(evento)}>
-              <option>Paises</option>
               {
                 countries.map(country => (
-                  <option value={country.id}>{country.Nombre}</option>
+                  <option key={country.ID} value={country.Nombre}>{country.Nombre}</option>
                 ))
               }
             </select>
@@ -142,7 +141,7 @@ const ActivitisCreate = () => {
           <div>
             {input.countryid.map(country => (
               <div>
-                <input type='button' value='X' onClick={() => handleDelete(country)} />
+                <input key={country} type='button' value='X' onClick={() => handleDelete(country)} />
                 <p>{country}</p>
               </div>
             ))}
