@@ -1,6 +1,5 @@
 import React from 'react';
 import './Navbar.css';
-import SearchBar from '../searchBar/Search';
 import { Link } from "react-router-dom";
 
 
@@ -26,8 +25,6 @@ const Navbar = () => {
     <li>
     </li>
   </ul>
-          
-    <SearchBar/>
     </div>
 </nav>
   )
