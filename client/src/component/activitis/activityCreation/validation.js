@@ -1,10 +1,13 @@
-export const validation = (userData, errors, activitis) => {
+export const validation = (userData, errors, activities) => {
     let error = { ...errors };
     if (!userData.Nombre.trim()) {
-        userData.Nombre = 'Debes completar este campo';
+        error.Nombre = 'Debes completar este campo';
     }
-    else if (userData.Nombre > 25) {
-        userData.Nombre = 'Nombre de la actividad demasiado largo'
+    else if (userData.Nombre.length > 25) {
+        error.Nombre = 'Nombre de la actividad demasiado largo'
+    }
+    else if(activities.find((act) => act.Nombre === userData.Nombre)) {
+        error.Nombre = 'Ese nombre no esta disponible';
     }
         else error.Nombre = '';
     if (!userData.Dificultad)

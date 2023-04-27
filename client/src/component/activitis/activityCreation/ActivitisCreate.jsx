@@ -34,7 +34,7 @@ const ActivitisCreate = () => {
     setErrors(validation({
       ...input,
       [evento.target.name]: evento.target.value
-    }, errors));
+    }, errors, activity));
   }
   
   const handleDelete = (id) => {
