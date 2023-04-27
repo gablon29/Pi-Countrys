@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { getActivities, getCountries, postActivities,} from '../../../redux/actions';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { validation } from './validation';
+import { validation, validationSubmit, validationArray } from './validation';
 import NavBar from '../../navbar/Navbar'
 import './ActivitiStilo.css'
 
@@ -25,7 +25,6 @@ const ActivitisCreate = () => {
   
   const countries = useSelector((state) => state.allCountries)
   const activity = useSelector(state => state.activitis)
-  console.log(activity)
   const handleChange = (evento) => {
     setInput({
       ...input,
@@ -45,21 +44,18 @@ const ActivitisCreate = () => {
   }
   
   function handleSelect(evento) {
-    setInput({
-      ...input,
-      countryid: [...input.countryid, evento.target.value]
-    })
+    const value = evento.target.value
+    if (validationArray(value, input.countryid) !== undefined) {
+      setInput({
+        ...input,
+        countryid: [...input.countryid, value]
+      })
+    } else return alert('Paise repetido')
   }
-  console.log(errors)
-  console.log(input)
 
   const handleSubmit = async (evento) => {
     evento.preventDefault();
-    if (
-      errors.Nombre !== '' ||
-      errors.Duracion !== '' ||
-      errors.Dificultad !== '' ||
-      errors.Temporada !== '') 
+    if(!validationSubmit(errors))
       return alert('Debes completar todos los campos')
       dispatch(postActivities(input));
       alert('Actividad creada con exito')

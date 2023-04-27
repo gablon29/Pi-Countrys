@@ -17,7 +17,20 @@ export const validation = (userData, errors, activities) => {
     else error.Duracion = '';
     if (!userData.Temporada || userData.Temporada === 'Temporada') error.Temporada = 'Debes elegir una temporada';
     else error.Temporada = '';
-    if (userData.countryid === [] || userData.countryid.includes('Paises')) error.countryid = 'Debes elegir un País';
+    if (userData.countryid.length === 0) error.countryid = 'Debes elegir un País';
     else error.countryid = '';
     return error;
+}
+
+export const validationSubmit = (error) => {
+    for (var prop in error) {
+        if (error[prop] !== '') 
+            return false
+    }
+    return true
+}
+
+export const validationArray = (valor, arr) => {
+    let index = arr.indexOf(valor)
+    if (index === -1) return valor;
 }
