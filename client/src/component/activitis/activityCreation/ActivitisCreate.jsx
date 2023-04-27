@@ -24,7 +24,8 @@ const ActivitisCreate = () => {
   }, [dispatch]);
   
   const countries = useSelector((state) => state.allCountries)
-  
+  const activity = useSelector(state => state.activitis)
+  console.log(activity)
   const handleChange = (evento) => {
     setInput({
       ...input,
@@ -52,26 +53,25 @@ const ActivitisCreate = () => {
   console.log(errors)
   console.log(input)
 
-  const handleSubmit = (evento) => {
+  const handleSubmit = async (evento) => {
     evento.preventDefault();
     if (
       errors.Nombre !== '' ||
       errors.Duracion !== '' ||
       errors.Dificultad !== '' ||
-      errors.Temporada !== '')
-      return alert('Debes completar todos los campos');
-    dispatch(postActivities(input));
-    alert('Actividad creada con exito')
-    setInput({
-      Nombre: '',
-      Dificultad: '',
-      Duracion: '',
-      Temporada: '',
-      countryid: [],
-    });
-    history.push('/Home')
-  }
-
+      errors.Temporada !== '') 
+      return alert('Debes completar todos los campos')
+      dispatch(postActivities(input));
+      alert('Actividad creada con exito')
+      setInput({
+        Nombre: '',
+        Dificultad: '',
+        Duracion: '',
+        Temporada: '',
+        countryid: [],
+      });
+      history.push('/Home')
+  };
   return (
     <div>
       <div>

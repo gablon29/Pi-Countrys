@@ -96,8 +96,13 @@ export const getActivities = () => async (dispatch) => {
 };
 
 export const postActivities = (payload) => async (dispatch) => {
-    await axios.post('http://localhost:3001/activity', payload);
-    return dispatch({
-        type: POST_ACTIVITIES,
-    });
-};
+    try {
+        await axios.post('http://localhost:3001/activity', payload);
+        return dispatch({
+            type: POST_ACTIVITIES,
+        });
+    } catch(error) {
+        alert('Esta actividad ya ha sido creada')
+        return { error: error.message }
+    }
+}
