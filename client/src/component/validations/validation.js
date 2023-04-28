@@ -21,8 +21,8 @@ export const validation = (userData, errors, activities) => {
     if (!userData.Temporada || userData.Temporada === 'Temporada') error.Temporada = 'Debes elegir una temporada';
     else error.Temporada = '';
     
-    if (userData.countryid.length === 0) error.countryid = 'Debes elegir un País';
-    else error.countryid = '';
+    if (!arrayvalidate(userData.countryid)) error.countryid = '';
+    else error.countryid = 'Debes elegir un pais';
     
     return error;
 }
@@ -33,6 +33,10 @@ export const validationSubmit = (error) => {
             return false
     }
     return true
+}
+
+export const arrayvalidate = (array) => {
+    return array.length <= 0
 }
 
 export const validationArray = (valor, arr) => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import Activitis from "../Activitis";
+import Activitis from "../activCards/Activitis";
 import { useSelector, useDispatch } from "react-redux";
 import { getActivities } from "../../../redux/actions";
 import './Activiti.css'

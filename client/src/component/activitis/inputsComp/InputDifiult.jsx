@@ -17,7 +17,7 @@ const InputDifiult = ({handlechange}) => {
               min='1'
               max='5'
               onChange={handleInputChange}
-              handlechange={handlechange}
+              handlechange="{handlechange}"
             />
             <p className='text_range'>ingresa dificultad</p>
     </div>

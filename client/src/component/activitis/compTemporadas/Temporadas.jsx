@@ -12,7 +12,7 @@ const Temporadas = ({handlechange}) => {
     <div>
       <select className='btn_select' name='Temporada'
               onChange={handleChangeTemporada}
-              handlechange={handlechange}
+              handlechange="{handlechange}"
             >
             <option value=''>Temporada</option>
             <option value="Verano">Verano</option>

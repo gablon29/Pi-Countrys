@@ -16,7 +16,7 @@ const InputDuration = ({ handlechange }) => {
                     placeholder='Duracion promedio de tu actividad'
                     name='Duracion'
                     onChange={handleInputChange}
-                    handlechange={handlechange}
+                    handlechange="{handlechange}"
                 />
             </div>
         )

@@ -18,7 +18,7 @@ const InputName = ({handlechange}) => {
               placeholder='Nombre de la actividad'
               name='Nombre'
               onChange= {handleInputChange}
-              handlechange={handlechange}
+              handlechange="{handlechange}"
             />
           </div>
     </div>

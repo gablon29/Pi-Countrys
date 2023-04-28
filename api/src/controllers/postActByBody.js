@@ -1,8 +1,14 @@
 const { Activity } = require("../db");
 
-const postActByBody = (act) => {
-    const newActivity =  Activity.create(act);
-    return newActivity;
+const postActByBody = async (act) => {
+    try {
+        const newActivity = await Activity.create(act);
+        return newActivity;
+    } catch (error){
+        return {
+            error: error.message
+        }
+    }
 }
 
 module.exports = {

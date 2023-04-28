@@ -25,6 +25,7 @@ const Cards = () => {
   const btnReload = (evento) => {
     evento.preventDefault()
     dispatch(getCountries())
+    window.location.reload()
   };
 
   const handleFilterContinent = (evento) => {
@@ -97,6 +98,7 @@ const Cards = () => {
               )
               })
       }
+      <h1>Pagina actual: {page}</h1>
     </div>
   );
 

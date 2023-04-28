@@ -32,6 +32,7 @@ export const searchCountries = (stateSearch) => async (dispatch) => {
             payload: response.data
         })
     } catch (error) {
+        alert('No existe pais con ese nombre')
         return {
             error: error.message
         }
@@ -46,7 +47,7 @@ export const getDetail = (id) => async (dispatch) => {
             payload: response.data
         })
     }
-    catch (error){
+    catch (error) {
         return {
             error: error.message
         }

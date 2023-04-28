@@ -1,6 +1,6 @@
 import React from 'react'
-import './activityList/ActivityList'
-import './activityList/ActivityList'
+import '../activityList/ActivityList'
+import '../activityList/ActivityList'
 import { Link } from "react-router-dom";
 import './Activiti.css'
 

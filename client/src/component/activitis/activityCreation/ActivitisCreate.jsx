@@ -10,34 +10,29 @@ import Temporadas from '../compTemporadas/Temporadas';
 import InputName from '../inputsComp/InputName';
 import InputDifiult from '../inputsComp/InputDifiult';
 import InputDuration from '../inputsComp/InputDuration';
+import SelectCountry from '../selectCountry/SelectCountry';
+import Delete from '../deleteCountry/Delete';
 
 const ActivitisCreate = () => {
-  const countries = useSelector((state) => state.allCountries)
-  const activity = useSelector(state => state.activitis)
   const dispatch = useDispatch();
   const history = useHistory();
-  const [errors, setErrors] = useState({
-    Nombre: '',
-    Dificultad: '',
-    Duracion: '',
-    Temporada: '',
-    countryid: [],
-  });
   const [input, setInput] = useState({
     Nombre: '',
     Dificultad: '',
     Duracion: '',
     Temporada: '',
-    countryid: [],
+    countryid: [] 
   })
+  const [errors, setErrors] = useState({...input});
   useEffect(() => {
     dispatch(getActivities())
     dispatch(getCountries())
   }, [dispatch]);
-  
+
+  const activity = useSelector(state => state.activitis)
 
   const handlechange = (prop, value) => {
-     setInput(input =>({
+    setInput(input =>({
       ...input,
       [prop]: value
     }));
@@ -47,23 +42,35 @@ const ActivitisCreate = () => {
     }, errors, activity));
   }
   
-  const handleDelete = (id) => {
+  const handle_delete = (id) => {
+    let filterCount = input.countryid.filter((country => country !== id))
     setInput({
       ...input,
-      countryid: input.countryid.filter((country => country !== id))
+      countryid: filterCount
     })
+    if (!input.countryid.length) 
+    setErrors(errors => ({
+      ...errors,
+      countryid: [],
+      }))
   }
   
-  function handleSelect(evento) {
-    const value = evento.target.value
+  const handleselect = (prop, value) => {
     if (validationArray(value, input.countryid) !== undefined) {
-      setInput({
+      setInput(input => ({
         ...input,
-        countryid: [...input.countryid, value]
-      })
-    } else return alert('Pais repetido')
+        [prop]: [...input.countryid, value]
+      }))
+      setErrors(errors => ({
+        ...errors,
+        countryid: ''
+      }))
+      }
+     else return alert('Pais repetido')
   }
-
+// formulario
+  // nuevo cambio
+  // 
   const handleSubmit = (evento) => {
     evento.preventDefault();
     if(!validationSubmit(errors))
@@ -99,23 +106,12 @@ const ActivitisCreate = () => {
             {errors.Duracion && <p className='text_error'>{errors.Duracion}</p>}
           <Temporadas handlechange={handlechange}/>
           <div>
-            <select className='btn_select' onChange={(evento) => handleSelect(evento)}>
-              <option value=''>Elige el Pais</option>
-              {
-                countries.map(country => (
-                  <option key={country.ID} value={country.Nombre}>{country.Nombre}</option>
-                ))
-              }
-            </select>
-            
+            <SelectCountry handleselect={handleselect}
+            />
           </div>
           <div>
-            {input.countryid.map(country => (
-              <div>
-                <input key={country} type='button' value='X' onClick={() => handleDelete(country)} />
-                <p>{country}</p>
-              </div>
-            ))}
+          <Delete input={input} handle_delete={handle_delete}/>
+           
           </div>
           <div>
             <button className='btn_create' type='submit'>Crear Actividad</button>
