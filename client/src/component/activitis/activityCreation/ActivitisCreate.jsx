@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { validation, validationSubmit, validationArray } from './validation';
 import NavBar from '../../navbar/Navbar'
 import './ActivitiStilo.css'
+import Temporadas from '../compTemporadas/Temporadas';
+import InputName from '../inputsComp/InputName';
+import InputDifiult from '../inputsComp/InputDifiult';
 
 const ActivitisCreate = () => {
   const dispatch = useDispatch();
@@ -25,16 +28,19 @@ const ActivitisCreate = () => {
   
   const countries = useSelector((state) => state.allCountries)
   const activity = useSelector(state => state.activitis)
-  const handleChange = (evento) => {
-    setInput({
+
+  const handlechange = async (prop, value) => {
+     setInput(input =>({
       ...input,
-      [evento.target.name]: evento.target.value
-    });
+      [prop]: value
+    }));
     setErrors(validation({
       ...input,
-      [evento.target.name]: evento.target.value
+      [prop]: value
     }, errors, activity));
   }
+  console.log(input);
+  console.log(errors);
   
   const handleDelete = (id) => {
     setInput({
@@ -75,30 +81,11 @@ const ActivitisCreate = () => {
       </div>
       <div>
         <form className='activity_form' onSubmit={handleSubmit}>
-          <h1 className='titulo_actividad'>Crea tu actividad</h1>
-          <div>
-            <label className='stylo_label'>Actividad</label>
-            <input className='input_create'
-              type='text' 
-              placeholder='Nombre de la actividad'
-              name='Nombre'
-              onChange={handleChange}
-              value={input.Nombre}
-            />
-          </div>
+          <InputName handlechange={handlechange}/>
           {errors.Nombre && <p className='text_error'>{errors.Nombre}</p>}  
 
           <div>
-            <label className='stylo_label'>Dificultad</label>
-            <input className='input_create'
-              type='range' 
-              value={input.Dificultad}
-              name='Dificultad'
-              min='1'
-              max='5'
-              onChange={evento => handleChange(evento)}
-            />
-            <p className='text_range'>{input.Dificultad}</p>
+            <InputDifiult handlechange={handlechange}/>
              {errors.Dificultad && <p className='text_error'>{errors.Dificultad}</p>}
           </div>
           <div>
@@ -108,22 +95,11 @@ const ActivitisCreate = () => {
               placeholder='Duracion promedio de tu actividad'
               value={input.Duracion}
               name='Duracion'
-              onChange={handleChange}
+              onChange={handlechange}
             />
           </div>
             {errors.Duracion && <p className='text_error'>{errors.Duracion}</p>}
-          <div>
-            <select className='btn_select' name='Temporada'
-              value={input.Temporada}
-              onChange={(evento) => handleChange(evento)}
-            >
-            <option>Temporada</option>
-            <option>Verano</option>
-            <option>Otoño</option>
-            <option>Invierno</option>
-            <option>Primavera</option>
-            </select>
-          </div>
+          <Temporadas handlechange={handlechange}/>
           <div>
             <select className='btn_select' onChange={(evento) => handleSelect(evento)}>
               {
