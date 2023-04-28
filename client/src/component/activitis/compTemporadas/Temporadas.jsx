@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Temporadas = ({handlechange}) => {
 
@@ -14,7 +14,7 @@ const Temporadas = ({handlechange}) => {
               onChange={handleChangeTemporada}
               handlechange={handlechange}
             >
-            <option>Temporada</option>
+            <option value=''>Temporada</option>
             <option value="Verano">Verano</option>
             <option value="Otoño">Otoño</option>
             <option value="Invierno">Invierno</option>

@@ -3,20 +3,29 @@ import { useState, useEffect } from 'react';
 import { getActivities, getCountries, postActivities,} from '../../../redux/actions';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { validation, validationSubmit, validationArray } from './validation';
+import { validation, validationSubmit, validationArray } from '../../validations/validation';
 import NavBar from '../../navbar/Navbar'
 import './ActivitiStilo.css'
 import Temporadas from '../compTemporadas/Temporadas';
 import InputName from '../inputsComp/InputName';
 import InputDifiult from '../inputsComp/InputDifiult';
+import InputDuration from '../inputsComp/InputDuration';
 
 const ActivitisCreate = () => {
+  const countries = useSelector((state) => state.allCountries)
+  const activity = useSelector(state => state.activitis)
   const dispatch = useDispatch();
   const history = useHistory();
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({
+    Nombre: '',
+    Dificultad: '',
+    Duracion: '',
+    Temporada: '',
+    countryid: [],
+  });
   const [input, setInput] = useState({
     Nombre: '',
-    Dificultad: '3',
+    Dificultad: '',
     Duracion: '',
     Temporada: '',
     countryid: [],
@@ -26,10 +35,8 @@ const ActivitisCreate = () => {
     dispatch(getCountries())
   }, [dispatch]);
   
-  const countries = useSelector((state) => state.allCountries)
-  const activity = useSelector(state => state.activitis)
 
-  const handlechange = async (prop, value) => {
+  const handlechange = (prop, value) => {
      setInput(input =>({
       ...input,
       [prop]: value
@@ -39,8 +46,6 @@ const ActivitisCreate = () => {
       [prop]: value
     }, errors, activity));
   }
-  console.log(input);
-  console.log(errors);
   
   const handleDelete = (id) => {
     setInput({
@@ -56,10 +61,10 @@ const ActivitisCreate = () => {
         ...input,
         countryid: [...input.countryid, value]
       })
-    } else return alert('Paise repetido')
+    } else return alert('Pais repetido')
   }
 
-  const handleSubmit = async (evento) => {
+  const handleSubmit = (evento) => {
     evento.preventDefault();
     if(!validationSubmit(errors))
       return alert('Debes completar todos los campos')
@@ -89,19 +94,13 @@ const ActivitisCreate = () => {
              {errors.Dificultad && <p className='text_error'>{errors.Dificultad}</p>}
           </div>
           <div>
-            <label className='stylo_label' >Duracion</label>
-            <input className='input_create'
-              type='text' 
-              placeholder='Duracion promedio de tu actividad'
-              value={input.Duracion}
-              name='Duracion'
-              onChange={handlechange}
-            />
+           <InputDuration handlechange={handlechange}/>
           </div>
             {errors.Duracion && <p className='text_error'>{errors.Duracion}</p>}
           <Temporadas handlechange={handlechange}/>
           <div>
             <select className='btn_select' onChange={(evento) => handleSelect(evento)}>
+              <option value=''>Elige el Pais</option>
               {
                 countries.map(country => (
                   <option key={country.ID} value={country.Nombre}>{country.Nombre}</option>

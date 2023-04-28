@@ -19,7 +19,7 @@ const VideoBackgroundInicio = () => {
             <p>Disfruta de esta increible aplicacion, donde podras encontrar<br />
             los mejores lugares y actividades que puede brindarte nuestra madre Tierra</p>
         <Link to={'/Home'}>
-        <button className='home-btn'>Welcome</button>
+        <button className='home-btn'>Home</button>
         </Link>
       </div>
         </div>
