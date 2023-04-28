@@ -6,7 +6,7 @@ export const validation = (userData, errors, activities) => {
     else if (userData.Nombre.length > 25) {
         error.Nombre = 'Nombre de la actividad demasiado largo'
     }
-    else if(activities.find((act) => act.Nombre === userData.Nombre)) {
+    else if(activities.find((act) => act.Nombre.toLowerCase().trim() === userData.Nombre.toLowerCase().trim())) {
         error.Nombre = 'Ese nombre no esta disponible';
     }
         else error.Nombre = '';
