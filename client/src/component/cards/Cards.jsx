@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Paginado from '../paginado/Paginado';
 import './Cards.css'
+import SearchBar from '../searchBar/Search';
 
 const Cards = () => {
   const dispatch = useDispatch()
@@ -27,6 +28,10 @@ const Cards = () => {
     dispatch(getCountries())
     window.location.reload()
   };
+
+  const functSearch = () => {
+    setPage(1)
+  }
 
   const handleFilterContinent = (evento) => {
     evento.preventDefault()
@@ -52,8 +57,10 @@ const Cards = () => {
     dispatch(getCountries())
     dispatch(getActivities())
   }, [dispatch]);
+
   return (
     <div className='divContenedorCar'>
+      <SearchBar functSearch={functSearch} />
       <div>
         <button id='home_btn' onClick={(evento) => btnReload(evento)}>Recargar</button>
         <select className='filtrado' onChange={(evento) => handleFilterContinent(evento)}>
