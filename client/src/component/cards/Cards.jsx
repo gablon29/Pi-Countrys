@@ -2,23 +2,28 @@ import React from 'react';
 import Card from '../card/Card';
 import { Link } from "react-router-dom";
 import { filterByContinent, getActivities, getCountries, orderByName, orderByPopulation } from '../../redux/actions';
-import {NUMEROUS_COUNTRYS, LESS_NUMEROUS, POPULATION} from '../../redux/constantes'
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Paginado from '../paginado/Paginado';
 import './Cards.css'
 import SearchBar from '../searchBar/Search';
+import SelectContinent from './selectComp/SelectContinent';
+import SelectOrder from './selectComp/SelectOrder';
 
 const Cards = () => {
   const dispatch = useDispatch()
-  const countries = useSelector((state) => state.countries)
+  const countries = useSelector(state => state.countries)
 
   const [page, setPage] = useState(1);
   const [countryPerPage] = useState(10);
   const lastCountry = page * countryPerPage;
   const firstCountry = lastCountry - countryPerPage;
-  const currentCountry = countries.slice(firstCountry, lastCountry);
+  let currentCountry = countries.slice(firstCountry, lastCountry);
   const [, setOrden] = useState('')
+  useEffect(() => {
+    dispatch(getCountries())
+    dispatch(getActivities())
+  }, [dispatch]);
   
   const paginado = (pageNumber) => {
     setPage(pageNumber)
@@ -29,65 +34,44 @@ const Cards = () => {
     window.location.reload()
   };
 
-  const functSearch = () => {
+  const functsearch = () => {
     setPage(1)
   }
 
-  const handleFilterContinent = (evento) => {
-    evento.preventDefault()
-    dispatch(filterByContinent(evento.target.value))
+  const handle_filter_continent = (evento) => {
+    dispatch(filterByContinent(evento))
     setPage(1)
   }
 
-  const handleSort = (evento) => {
-    evento.preventDefault()
-    dispatch(orderByName(evento.target.value))
+  const handle_sort = (evento) => {
+    dispatch(orderByName(evento))
     setPage(1)
-    setOrden(`Ordenado ${evento.target.value}`)
+    setOrden(`Ordenado ${evento}`)
   }
 
-  const handleSortPopulation = (evento) => {
-    evento.preventDefault();
-    dispatch(orderByPopulation(evento.target.value));
-    setPage(1);
-    setOrden(`Ordenado ${evento.target.value}`);
+  const handle_sort_population = (evento) => {
+    dispatch(orderByPopulation(evento));
+    setPage(1)
+    setOrden(`Ordenado ${evento}`);
   }
     
-  useEffect(() => {
-    dispatch(getCountries())
-    dispatch(getActivities())
-  }, [dispatch]);
 
   return (
     <div className='divContenedorCar'>
-      <SearchBar functSearch={functSearch} />
+      <SearchBar functsearch={functsearch} />
       <div>
         <button id='home_btn' onClick={(evento) => btnReload(evento)}>Recargar</button>
-        <select className='filtrado' onChange={(evento) => handleFilterContinent(evento)}>
-          <option>Todos</option>
-          <option>South America</option>
-          <option>North America</option>
-          <option>Asia</option>
-          <option>Africa</option>
-          <option>Europe</option>
-          <option>Oceania</option>
-        </select>
+        <SelectContinent handle_filter_continent={handle_filter_continent} />
         
-        <select className='filtrado' onChange={evento => handleSort(evento)}>
-          <option>Todos</option>
-          <option>A - Z</option>
-        </select>
-        <select className='filtrado' onChange={evento => handleSortPopulation(evento)}>
-          <option value={POPULATION}>Popularidad</option>
-          <option value={NUMEROUS_COUNTRYS}>Mas Populares</option>
-          <option value={LESS_NUMEROUS}>Menos Populares</option>
-        </select>
+        <SelectOrder handle_sort={handle_sort} 
+          handle_sort_population={handle_sort_population}
+        />
+
+      </div>
         <Paginado countryPerPage={countryPerPage} 
           countries={countries.length}
           paginado={paginado}
         />
-        
-      </div>
           {
               currentCountry?.map(({ ID, Nombre, Bandera, Continente, Capital, Poblacion }) => {
               return (

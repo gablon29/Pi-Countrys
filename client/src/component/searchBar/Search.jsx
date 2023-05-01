@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { searchCountries } from '../../redux/actions';
 import './Search.css'
 
-const SearchBar = ({functSearch}) => {
+const SearchBar = ({functsearch}) => {
     const [stateSearch, setStateSearch] = useState('');
     const dispatch = useDispatch();
 
@@ -12,7 +12,7 @@ const SearchBar = ({functSearch}) => {
         if (stateSearch.length === 0) return alert('Debes ingresar un país');
         dispatch(searchCountries(stateSearch))
       setStateSearch('');
-      functSearch()
+      functsearch()
     }    
     
     const onInputChange = (evento) => {
@@ -22,7 +22,7 @@ const SearchBar = ({functSearch}) => {
 
   return (
     <div>
-          <form onSubmit={onsubmit} functSearch="{functSearch}">
+          <form onSubmit={onsubmit} functsearch="{functsearch}">
               <input className='casillaBusqueda' type='text' placeholder='Que país deseas buscar' onChange={onInputChange} value={stateSearch}/>
               <input className='btn-buscar' type='submit' value='submit'/>
       </form>

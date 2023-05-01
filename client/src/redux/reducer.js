@@ -81,7 +81,6 @@ export default function rootReducer(state = initialState, action) {
                 countries: filterByName
             }
         case ORDER_POPULATION:
-            if(action.payload === POPULATION) return state 
             let getPopulation = action.payload === NUMEROUS_COUNTRYS  ? 
                 state.countries.sort((a, b) => {
                     const countryA = a.Poblacion;
