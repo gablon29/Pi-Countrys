@@ -24,6 +24,8 @@ const ActivitisCreate = () => {
     countryid: [] 
   })
   const [errors, setErrors] = useState({...input});
+  
+  
   useEffect(() => {
     dispatch(getActivities())
     dispatch(getCountries())
@@ -48,7 +50,7 @@ const ActivitisCreate = () => {
       ...input,
       countryid: filterCount
     })
-    if (!input.countryid.length) 
+    if (!input.countryid.length === 0) 
     setErrors(errors => ({
       ...errors,
       countryid: [],
@@ -63,17 +65,19 @@ const ActivitisCreate = () => {
       }))
       setErrors(errors => ({
         ...errors,
-        countryid: ''
+        countryid: []
       }))
       }
      else return alert('Pais repetido')
   }
+  console.log(errors)
+  console.log(input)
 // formulario
   // nuevo cambio
   // 
   const handleSubmit = (evento) => {
     evento.preventDefault();
-    if(!validationSubmit(errors))
+    if (!validationSubmit(errors))
       return alert('Debes completar todos los campos')
       dispatch(postActivities(input));
       alert('Actividad creada con exito')

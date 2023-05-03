@@ -18,12 +18,8 @@ const Cards = () => {
   const [countryPerPage] = useState(10);
   const lastCountry = page * countryPerPage;
   const firstCountry = lastCountry - countryPerPage;
-  let currentCountry = countries.slice(firstCountry, lastCountry);
+  const currentCountry = countries.slice(firstCountry, lastCountry);
   const [, setOrden] = useState('')
-  useEffect(() => {
-    dispatch(getCountries())
-    dispatch(getActivities())
-  }, [dispatch]);
   
   const paginado = (pageNumber) => {
     setPage(pageNumber)
@@ -31,30 +27,35 @@ const Cards = () => {
   const btnReload = (evento) => {
     evento.preventDefault()
     dispatch(getCountries())
-    window.location.reload()
+    setPage(1)
   };
-
+  
   const functsearch = () => {
     setPage(1)
   }
-
+  
   const handle_filter_continent = (evento) => {
     dispatch(filterByContinent(evento))
     setPage(1)
   }
-
+  
   const handle_sort = (evento) => {
     dispatch(orderByName(evento))
     setPage(1)
     setOrden(`Ordenado ${evento}`)
   }
-
+  
   const handle_sort_population = (evento) => {
     dispatch(orderByPopulation(evento));
     setPage(1)
     setOrden(`Ordenado ${evento}`);
   }
-    
+  
+  useEffect(() => {
+  dispatch(getCountries())
+    dispatch(getActivities())
+  }, [dispatch]);
+  
 
   return (
     <div className='divContenedorCar'>
